@@ -1,0 +1,5 @@
+rootProject.name = 'demo-gateway'
+include 'user-service'
+include 'product-service'
+include 'gateway-service'
+
