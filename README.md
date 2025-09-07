@@ -27,3 +27,11 @@ The project is a Gradle multi-project build with three services:
 ```sh
 git clone [https://github.com/CHHORNSeyha88/demo-spring-api-gateway.git](https://github.com/CHHORNSeyha88/demo-spring-api-gateway.git)
 cd demo-spring-api-gateway
+
+
+### Step 1: Build the Project
+
+```You can build all subprojects with a single command:
+./gradlew build
+
+
