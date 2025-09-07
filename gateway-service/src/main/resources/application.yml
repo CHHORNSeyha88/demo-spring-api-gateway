@@ -1,19 +1,61 @@
 server:
   port: 8080
+
 spring:
   main:
     web-application-type: reactive
+  application:
+    name: gateway-service
   cloud:
     gateway:
       server:
         webflux:
-          routes:
-            - id: product_service
-              uri: http://localhost:8082
-              predicates:
-                - Path=/products/**
-            - id: user_service
-              uri: http://localhost:8081
-              predicates:
-                - Path=/users/**
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          default-filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8761/eureka/
 
+
+#server:
+#  port: 8080
+#
+#spring:
+#  main:
+#    web-application-type: reactive
+#  application:
+#    name: gateway-service
+#  cloud:
+#    gateway:
+#      server:
+#        webflux:
+#          discovery:
+#            locator:
+#              lower-case-service-id: true
+#              enabled: true
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+
+#manual setup
+
+#  cloud:
+#    gateway:
+#      server:
+#        webflux:
+#          routes:
+#            - id: product_service
+#              uri: http://localhost:8082
+#              predicates:
+#                - Path=/products/**
+#            - id: user_service
+#              uri: http://localhost:8081
+#              predicates:
+#                - Path=/users/**
